@@ -2,18 +2,16 @@ import graphene
 import json
 import Query
 
-quser = """
- { user(id: $id) {
-     firstName 
-     lastName 
-     age 
+quser = '''query getUser(){ user(_id:12) {
+          _id
+         firstName 
+         lastname 
+         age 
      }
-  }'
- """
-query = """
- query { user  }
- """ 
+  } '''
+
 print(quser)
-result = Query.schema.execute('{ user }',quser,variable_values={'id': 12},)
+
+result =  Query.myschema.execute(quser)#,variable_values={'_id': 12},)
 
 
